@@ -1,0 +1,23 @@
+def firstUniqChar(self, s: str) -> int:
+        d = {}
+        seen = set()
+        for idx, c in enumerate(s):
+            if c not in seen:
+                d[c] = idx
+                seen.add(c)
+            elif c in d:
+                del d[c]
+        return min(d.values()) if d else -1
+                
+def firstUniqChar(self, s: str) -> int:
+        d = dict()
+        for c in s:
+            if c in d:
+                d[c] += 1
+            else:
+                d[c] = 1
+        for i in range(len(s)):
+            c = s[i]
+            if d[c] == 1:
+                return i
+        return -1
