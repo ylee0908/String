@@ -1,3 +1,7 @@
+str_1 = "Google e"
+str_2 = "Oogglee"
+
+
 #time complexity : O (n log n)
 #space complexity : O(n)
 def is_permutation_one(str_1, str_2):
