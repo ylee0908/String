@@ -1,4 +1,39 @@
-def firstUniqChar(self, s: str) -> int:
+from collections import Counter
+import string
+letters  = string.ascii_lowercase
+
+def firstUniqueOne(s):
+	counter = Counter(s)
+	for i, char in enumerate(s):
+		if counter[char] == 1:
+			return i
+	return - 1
+
+
+def firstUniqueOneOne(s):
+	sc = Counter(s)
+	for i in range(len(s)):
+		c = s[i]
+		if sc.get(c, 0) == 1:
+			return i
+
+
+def firstUniqueTwo(s):
+	d = dict()
+	for i in s:
+		d[i] = d.get(i, 0) + 1
+	for i in range(len(s)):
+		if d[s[i]] == 1:
+			return i
+	return -1
+
+def firstUniqueThree(s):
+	letters = 'abcdefghijklmnopqrstuvwxyz' #letters  = string.ascii_lowercase
+	index = [s.index(l) for l in letters if s.count(l) == 1]
+	return min(index) if len(index) > 0 else -1
+
+
+def firstUniqChar(s):
         d = {}
         seen = set()
         for idx, c in enumerate(s):
@@ -8,16 +43,9 @@ def firstUniqChar(self, s: str) -> int:
             elif c in d:
                 del d[c]
         return min(d.values()) if d else -1
-                
-def firstUniqChar(self, s: str) -> int:
-        d = dict()
-        for c in s:
-            if c in d:
-                d[c] += 1
-            else:
-                d[c] = 1
-        for i in range(len(s)):
-            c = s[i]
-            if d[c] == 1:
-                return i
-        return -1
+
+s = "aabbcdeee"
+
+print(firstUniqueOne(s))
+print(firstUniqueTwo(s))
+print(firstUniqueThree(s))
